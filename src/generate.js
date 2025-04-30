@@ -1,4 +1,4 @@
-import { mkdir } from 'fs/promises'
+import { mkdir, stat } from 'fs/promises'
 
 export async function generate(string) {
    try {
