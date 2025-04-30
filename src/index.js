@@ -18,14 +18,14 @@ program.command('generate')
 
 program.command('guide')
    .description("Display a guide for the next step")
-   .action((string, options) => {
-      console.log('options', options)
+   .action(() => {
+      console.log("Guide!")
    })
 
 program.command('check')
    .description("Check current step")
-   .action((string, options) => {
-      console.log('options', options)
+   .action(() => {
+      console.log("Check!")
    })
 
 program.parse()
