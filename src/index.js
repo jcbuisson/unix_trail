@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-
 import { Command } from 'commander'
+import { generate } from './generate.js'
+
 const program = new Command()
 
 program
@@ -12,8 +13,7 @@ program.command('generate')
    .description("Generate a new set of activities")
    .argument('<string>', "string used to make activities unique")
    .action((string, options) => {
-      console.log('string', string)
-      console.log('options', options)
+      generate()
    })
 
 program.command('guide')
