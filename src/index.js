@@ -12,8 +12,8 @@ program
 program.command('generate')
    .description("Generate a new set of activities")
    .argument('<string>', "string used to make activities unique")
-   .action((string, options) => {
-      generate()
+   .action((string) => {
+      generate(string)
    })
 
 program.command('guide')
