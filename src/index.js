@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander'
 import { generate } from './generate.js'
+import { reset } from './reset.js'
 
 const program = new Command()
 
@@ -9,11 +10,17 @@ program
    .description("Fun activities to learn Unix commands")
    .version('1.0.0')
 
-program.command('generate')
+   program.command('generate')
    .description("Generate a new set of activities")
    .argument('<string>', "string used to make activities unique")
    .action((string) => {
       generate(string)
+   })
+
+program.command('reset')
+   .description("Reset activities")
+   .action(() => {
+      reset()
    })
 
 program.command('guide')
