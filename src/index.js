@@ -4,19 +4,17 @@ import { Command } from 'commander';
 const program = new Command();
 
 program
-  .name('greet')
-  .description('A simple greeting CLI')
+  .name('unix_trail')
+  .description('Fun activities to learn Unix commands')
   .version('1.0.0');
 
 // Add a positional argument called "name"
-program
-  .argument('<name>', 'name to greet')
-  .option('-t, --times <number>', 'number of times to greet', '1')
-  .action((name, options) => {
-      const times = parseInt(options.times);
-      for (let i = 0; i < times; i++) {
-      console.log(`Hello, ${name}!`);
-      }
+program.command('generate')
+   .description('Generate a new set of activities')
+   .argument('<string>', 'string used to make activities unique')
+   .action((string, options) => {
+      console.log('string', string)
+      console.log('options', options)
    })
 
 program.parse()
