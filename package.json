@@ -15,6 +15,7 @@
     "type": "git",
     "url": ""
   },
+  "bin": "src/index.js",
   "bugs": "",
   "keywords": [],
   "author": {
