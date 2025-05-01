@@ -9,9 +9,9 @@ export async function instructions() {
          return
       }
       const current = await readFile('./.unix_trail/current', 'utf-8')
-      console.log("Instructions for step", current)
+      console.log("Instructions for stage", current)
       console.log("-----------------------")
-      const { displayInstructions } = await import(`./step${current}.js`)
+      const { displayInstructions } = await import(`./stages/stage${current}.js`)
       displayInstructions()
    } catch(err) {
       console.log(err)

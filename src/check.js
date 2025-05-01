@@ -9,12 +9,12 @@ export async function check() {
          return
       }
       const current = await readFile('./.unix_trail/current', 'utf-8')
-      const { checkWork } = await import(`./step${current}.js`)
+      const { checkWork } = await import(`./stages/stage${current}.js`)
       const isOK = await checkWork()
       if (isOK) {
          console.log(`Stage ${current}: COMPLETE!`)
          const nextCurrent = parseInt(current) + 1
-         const nextStageExists = existsSync(`./step${nextCurrent}.js`)
+         const nextStageExists = existsSync(`./stages/stage${nextCurrent}.js`)
          if (nextStageExists) {
             await writeFile('./.unix_trail/current', '' + nextCurrent, 'utf-8')
          } else {

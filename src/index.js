@@ -4,6 +4,7 @@ import { initialize } from './initialize.js'
 import { reset } from './reset.js'
 import { instructions } from './instructions.js'
 import { check } from './check.js'
+import { status } from './status.js'
 
 const program = new Command()
 
@@ -35,6 +36,12 @@ program.command('check')
    .description("Check current step")
    .action(() => {
       check()
+   })
+
+program.command('check')
+   .description("Display progress status")
+   .action(() => {
+      status()
    })
 
 program.parse()
