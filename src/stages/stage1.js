@@ -2,6 +2,10 @@ import { readFile } from 'fs/promises'
 import { existsSync } from 'fs'
 
 
+export async function setup() {
+   console.log("setup stage 1!!")
+}
+
 export async function displayInstructions() {
    const hashExists = existsSync('./.unix_trail/hash')
    if (!hashExists) {

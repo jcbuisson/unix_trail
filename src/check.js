@@ -15,7 +15,9 @@ export async function check() {
          console.log(`Stage ${current}: COMPLETE!`)
          const nextCurrent = parseInt(current) + 1
          await writeFile('./.unix_trail/current', '' + nextCurrent, 'utf-8')
-         await import(`./stages/stage${nextCurrent}.js`) // will throw ERR_MODULE_NOT_FOUND when all stages are completed
+         // if exists, load next stage and run its setup() function
+         const { setup } = await import(`./stages/stage${nextCurrent}.js`) // will throw ERR_MODULE_NOT_FOUND if all stages are completed
+         await setup()
       }
 
    } catch(err) {

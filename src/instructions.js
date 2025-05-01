@@ -13,7 +13,7 @@ export async function instructions() {
       console.log()
       console.log("Instructions for stage", current)
       console.log("-----------------------")
-      displayInstructions()
+      await displayInstructions()
       console.log()
    } catch(err) {
       if (err.code === 'ERR_MODULE_NOT_FOUND') {
