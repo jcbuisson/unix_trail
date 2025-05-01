@@ -11,17 +11,15 @@ export async function status() {
             return
          }
          const current = await readFile('./.unix_trail/current', 'utf-8')
-         console.log(`./stages/stage${current}.js`)
-         const currentStageExists = existsSync(`./stages/stage${current}.js`)
-         if (currentStageExists) {
-            console.log(`You are at stage ${current}`)
-         } else {
-            console.log("You have completed all stages")
-         }
+         await import(`./stages/stage${current}.js`)
+         console.log(`You are at stage ${current}`)
       } else {
          console.log("Activities are not initialized, use command 'initialize'")
       }
    } catch(err) {
-      console.log(err)
+      // console.log(err)
+      if (err.code === 'ERR_MODULE_NOT_FOUND') {
+         console.log("You have completed all stages")
+      }
    }
 }
