@@ -38,7 +38,7 @@ program.command('check')
       check()
    })
 
-program.command('check')
+program.command('status')
    .description("Display progress status")
    .action(() => {
       status()

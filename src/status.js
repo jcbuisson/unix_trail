@@ -9,7 +9,7 @@ export async function status() {
          return
       }
       const current = await readFile('./.unix_trail/current', 'utf-8')
-      console.log(`Your are at stage ${current}`)
+      console.log(`You are at stage ${current}`)
    } catch(err) {
       console.log(err)
    }
