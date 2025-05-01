@@ -19,9 +19,10 @@ export async function check() {
       }
 
    } catch(err) {
-      // console.log(err)
       if (err.code === 'ERR_MODULE_NOT_FOUND') {
          console.log("You have completed all stages")
+      } else {
+         console.lof(err)
       }
    }
 }

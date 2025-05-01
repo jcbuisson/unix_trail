@@ -9,11 +9,13 @@ export async function instructions() {
          return
       }
       const current = await readFile('./.unix_trail/current', 'utf-8')
-      console.log("Instructions for stage", current)
-      console.log("-----------------------")
       const { displayInstructions } = await import(`./stages/stage${current}.js`)
-      displayInstructions()
+      displayInstructions(current)
    } catch(err) {
-      console.log(err)
+      if (err.code === 'ERR_MODULE_NOT_FOUND') {
+         console.log("You have completed all stages")
+      } else {
+         console.lof(err)
+      }
    }
 }

@@ -2,7 +2,7 @@ import { readFile } from 'fs/promises'
 import { existsSync } from 'fs'
 
 
-export async function displayInstructions() {
+export async function displayInstructions(current) {
    const hashExists = existsSync('./.unix_trail/hash')
    if (!hashExists) {
       console.log("*** there is a settings issue, use command 'reset' or 'initialize'")
@@ -14,6 +14,8 @@ export async function displayInstructions() {
    const m = 3 + parseInt(hash.substring(2, 4), 16) % 3 // between 3 and 5
    const p = 3 + parseInt(hash.substring(4, 6), 16) % 3 // between 3 and 5
 
+   console.log("Instructions for stage", current)
+   console.log("-----------------------")
    console.log(`Create a hierarchy of ${n} directories named 'building1', 'building2', ..., 'building${n}'
 In each directory, create ${m} subdirectories named 'floor1', ..., 'floor${m}'
 In each subdirectory, create ${p} empty files named 'room1', ..., 'room${p}'`)

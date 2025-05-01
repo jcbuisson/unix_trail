@@ -17,9 +17,10 @@ export async function status() {
          console.log("Activities are not initialized, use command 'initialize'")
       }
    } catch(err) {
-      // console.log(err)
       if (err.code === 'ERR_MODULE_NOT_FOUND') {
          console.log("You have completed all stages")
+      } else {
+         console.lof(err)
       }
    }
 }
