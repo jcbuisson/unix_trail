@@ -10,6 +10,7 @@ export async function instructions() {
       }
       const current = await readFile('./.unix_trail/current', 'utf-8')
       console.log("Instructions for step", current)
+      console.log("-----------------------")
       const { displayInstructions } = await import(`./step${current}.js`)
       displayInstructions()
    } catch(err) {

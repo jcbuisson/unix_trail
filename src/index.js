@@ -3,12 +3,13 @@ import { Command } from 'commander'
 import { initialize } from './initialize.js'
 import { reset } from './reset.js'
 import { instructions } from './instructions.js'
+import { check } from './check.js'
 
 const program = new Command()
 
 program
    .name('unix_trail')
-   .description("Fun activities to learn Unix commands")
+   .description("Guided activities to learn Unix commands")
    .version('1.0.0')
 
 program.command('initialize')
@@ -33,7 +34,7 @@ program.command('instructions')
 program.command('check')
    .description("Check current step")
    .action(() => {
-      console.log("Check!")
+      check()
    })
 
 program.parse()
