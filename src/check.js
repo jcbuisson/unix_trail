@@ -16,7 +16,7 @@ export async function check() {
          const nextCurrent = parseInt(current) + 1
          await writeFile('./.unix_trail/current', '' + nextCurrent, 'utf-8')
          // if exists, load next stage and run its setup() function
-         const { setup } = await import(`./stages/stage${nextCurrent}.js`) // will throw ERR_MODULE_NOT_FOUND if all stages are completed
+         const { setup } = await import(`./stages/stage${nextCurrent}.js`) // will throw ERR_MODULE_NOT_FOUND if there is no next stage
          await setup()
       }
 
