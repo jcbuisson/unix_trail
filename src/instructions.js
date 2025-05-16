@@ -1,14 +1,8 @@
-import { readFile } from 'fs/promises'
-import { existsSync } from 'fs'
+import { getCurrent } from '#root/src/data.js'
 
 export async function instructions() {
    try {
-      const exists = existsSync('./.unix_trail/current')
-      if (!exists) {
-         console.log("*** there is a settings issue, use command 'reset' or 'initialize'")
-         return
-      }
-      const current = await readFile('./.unix_trail/current', 'utf-8')
+      const current = await getCurrent()
       const { displayInstructions } = await import(`./stages/stage${current}.js`)
       console.log("You are at stage", current)
       console.log()
@@ -18,7 +12,7 @@ export async function instructions() {
       if (err.code === 'ERR_MODULE_NOT_FOUND') {
          console.log("You have completed all stages")
       } else {
-         console.log(err)
+         console.log("*** there is a settings issue, use command 'reset' or 'initialize'")
       }
    }
 }
