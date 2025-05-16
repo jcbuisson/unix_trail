@@ -1,6 +1,9 @@
 {
+  "imports": {
+    "#root/*": "./*"
+  },
   "name": "unix_trail",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
   "main": "src/index.js",
   "type": "module",
@@ -29,6 +32,7 @@
     "test": ""
   },
   "dependencies": {
-    "commander": "^13.1.0"
+    "commander": "^13.1.0",
+    "vue": "^3.5.14"
   }
 }
