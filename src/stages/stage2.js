@@ -6,6 +6,7 @@ import { getHash, getCwd, getSecretFilePath } from '#root/src/data.js'
 
 
 export async function setup() {
+   // create a file path in the buildings directories with pseudo-random values taken from `hash`
    const secretFilePath = await getSecretFilePath()
    // create the secret file named `.{code`} with `hash` as content and place it in the building hierarchy at location `secretFilePath`
    const hash = await getHash()
@@ -15,7 +16,7 @@ export async function setup() {
 
 export async function displayInstructions() {
    console.log(`A hidden file (non-empty) has been placed inside one of the floor directories, among the room files.
-🔍 Your task: Find this hidden file and move it to the main directory, renaming it to secret.txt in the process.`)
+🔍 Your task: Find this hidden file and move it to the main directory, renaming it to 'secret.txt' in the process.`)
 }
 
 
