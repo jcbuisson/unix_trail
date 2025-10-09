@@ -1,8 +1,8 @@
-import { getCurrent } from '#root/src/data.js'
+import { getCurrentStageIndex } from '#root/src/data.js'
 
 export async function instructions() {
    try {
-      const current = await getCurrent()
+      const current = await getCurrentStageIndex()
       const { displayInstructions } = await import(`./stages/stage${current}.js`)
       console.log("You are at stage", current)
       console.log()

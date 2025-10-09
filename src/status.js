@@ -1,8 +1,8 @@
-import { getCurrent } from '#root/src/data.js'
+import { getCurrentStageIndex } from '#root/src/data.js'
 
 export async function status() {
    try {
-      const current = await getCurrent()
+      const current = await getCurrentStageIndex()
       // check for the existence of a stage of `current` index
       await import(`./stages/stage${current}.js`)
       console.log(`You are at stage ${current}`)

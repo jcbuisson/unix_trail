@@ -7,8 +7,8 @@ export const getCwd = async () => await readFile('./.unix_trail/cwd', 'utf-8')
 export const getCode = async () => await readFile('./.unix_trail/code', 'utf-8')
 export const getHash = async () => await readFile('./.unix_trail/hash', 'utf-8')
 
-export const getCurrent = async () => (await readFile('./.unix_trail/current', 'utf-8')).trim()
-export const setCurrent = async (value) => await writeFile('./.unix_trail/current', value+'', 'utf-8')
+export const getCurrentStageIndex = async () => (await readFile('./.unix_trail/current', 'utf-8')).trim()
+export const setCurrentStageIndex = async (value) => await writeFile('./.unix_trail/current', value+'', 'utf-8')
 
 export const getBuildingCount = async () => {
    const hash = await getHash()

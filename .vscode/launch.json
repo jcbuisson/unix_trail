@@ -5,9 +5,20 @@
    "version": "0.2.0",
    "configurations": [
       {
+         "name": "initialize",
          "type": "node",
          "request": "launch",
+         "skipFiles": [
+            "<node_internals>/**"
+         ],
+         "program": "${workspaceFolder}/src/index.js",
+         "args": ["initialize", "aaa"],
+         "cwd": "/Users/chris"
+      },
+      {
          "name": "status",
+         "type": "node",
+         "request": "launch",
          "skipFiles": [
             "<node_internals>/**"
          ],
@@ -16,9 +27,20 @@
          "cwd": "/Users/chris"
       },
       {
+         "name": "instructions",
          "type": "node",
          "request": "launch",
+         "skipFiles": [
+            "<node_internals>/**"
+         ],
+         "program": "${workspaceFolder}/src/index.js",
+         "args": ["instructions"],
+         "cwd": "/Users/chris"
+      },
+      {
          "name": "check",
+         "type": "node",
+         "request": "launch",
          "skipFiles": [
             "<node_internals>/**"
          ],

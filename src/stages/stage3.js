@@ -16,7 +16,7 @@ export async function checkWork() {
    const mode = stats.mode & 0o777 // Extract permission bits
    const octalMode = mode.toString(8) // ex: "644"
    if (octalMode !== '600') {
-      console.log(`*** the permissions for the file secret.txt should be: -rw------- (600)`)
+      console.log(`*** other users can read or write secret.txt`)
       return false
    }
    return true

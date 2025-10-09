@@ -3,7 +3,7 @@
     "#root/*": "./*"
   },
   "name": "unix_trail",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "description": "",
   "main": "src/index.js",
   "type": "module",
@@ -28,10 +28,13 @@
   },
   "contributors": [],
   "scripts": {
-    "dev": "",
+    "initialize": "node src/index.js initialize aaa",
+    "check": "node src/index.js check",
+    "instructions": "node src/index.js instructions",
     "test": ""
   },
   "dependencies": {
+    "axios": "^1.12.2",
     "commander": "^13.1.0",
     "vue": "^3.5.14"
   }

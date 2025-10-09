@@ -1,8 +1,15 @@
-import { readFile, writeFile } from 'fs/promises'
-import { existsSync } from 'fs'
-import path from 'path'
+import { exec } from "child_process";
 
-import { getHash, getCwd, getSecretFilePath } from '#root/src/data.js'
+function isProcessRunning(processName) {
+  return new Promise((resolve, reject) => {
+    exec(`ps aux | grep ${processName} | grep -v grep`, (error, stdout) => {
+      if (error) {
+        return resolve(false);
+      }
+      resolve(stdout.trim().length > 0);
+    });
+  });
+}
 
 
 export async function setup() {
@@ -10,11 +17,15 @@ export async function setup() {
 
 
 export async function displayInstructions() {
-   console.log(`Créer un script Python appelé 'xxx.py' qui fait yyy et lui donner le droit en exécution pour tous`)
+   console.log('Kill the process created by the command myhttpserver')
 }
 
 
 export async function checkWork() {
-   console.log(`Checking for stage 7...`)
+   const isRunning = await isProcessRunning('myhttpserver')
+   if (isRunning) {
+      console.log("*** the process created by the command myhttpserver is still running")
+      return false
+   }
    return false
 }
