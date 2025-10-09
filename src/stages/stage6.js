@@ -24,7 +24,6 @@ export async function checkWork() {
    }
    try {
       const response = await axios.get('http://localhost:8000/')
-      console.log('response', response)
       if (response.status != 200 || response.data !== "Hello, world!") {
          console.log('*** the http server returned an incorrect response')
          return false
