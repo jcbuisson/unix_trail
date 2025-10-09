@@ -27,5 +27,5 @@ export async function checkWork() {
       console.log("*** the process created by the command myhttpserver is still running")
       return false
    }
-   return false
+   return true
 }

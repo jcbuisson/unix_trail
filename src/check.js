@@ -1,6 +1,5 @@
 import { getCurrentStageIndex, setCurrentStageIndex } from '#root/src/data.js'
 
-
 export async function check() {
    try {
       const current = await getCurrentStageIndex()
@@ -18,7 +17,7 @@ export async function check() {
 
    } catch(err) {
       if (err.code === 'ERR_MODULE_NOT_FOUND') {
-         console.log("You have completed all stages")
+         console.log("There are no further stages")
       } else {
       console.log("*** there is a settings issue, use command 'reset' or 'initialize'")
       }
