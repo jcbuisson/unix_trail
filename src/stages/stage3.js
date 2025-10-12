@@ -1,4 +1,7 @@
 import { stat } from 'fs/promises'
+import path from 'path'
+
+import { getCwd } from '#root/src/data.js'
 
 
 export async function setup() {
@@ -11,7 +14,7 @@ export async function displayInstructions() {
 
 
 export async function checkWork() {
-   const filePath = `./secret.txt`
+   const filePath = path.join(getCwd(), 'secret.txt')
    const stats = await stat(filePath)
    const mode = stats.mode & 0o777 // Extract permission bits
    const octalMode = mode.toString(8) // ex: "644"

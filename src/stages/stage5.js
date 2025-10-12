@@ -1,7 +1,7 @@
 import { readFile, stat } from 'fs/promises'
 import path from 'path'
 
-import { getHash, getCwd, getSecretFilePath } from '#root/src/data.js'
+import { getCwd } from '#root/src/data.js'
 
 
 export async function setup() {
