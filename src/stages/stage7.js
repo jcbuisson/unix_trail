@@ -1,5 +1,5 @@
 import { exec } from "child_process";
-import fs from "fs";
+
 
 function getPid(processName) {
    return new Promise((resolve, reject) => {
@@ -12,14 +12,17 @@ function getPid(processName) {
    });
 }
 
-function isDetached(pid) {
-   try {
-      const tty = fs.readlinkSync(`/proc/${pid}/fd/0`);
-      // If it points to /dev/null or similar, no terminal is attached
-      return !tty.startsWith("/dev/pts/") && !tty.startsWith("/dev/tty");
-   } catch (err) {
-      return false; // process might not exist or no permissions
-   }
+function isProcessDetached(pid) {
+   return new Promise((resolve, reject) => {
+      exec(`ps -p ${pid} -o tty=`, (error, stdout) => {
+         if (error) {
+            return resolve(false);
+         }
+         const tty = stdout.trim();
+         const detached = tty.startsWith('?');
+         resolve(detached);
+      });
+   });
 }
 
 export async function setup() {
@@ -38,7 +41,7 @@ export async function checkWork() {
          console.log('*** no process named myhttpserver is running - did you start it?')
          return false
       }
-      if (!isDetached(pid)) {
+      if (!isProcessDetached(pid)) {
          console.log('*** a process named myhttpserver is running, but it is not detached from the terminal')
          return false
       }
