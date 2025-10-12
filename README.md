@@ -10,6 +10,9 @@ npx unix_trail`
 run `npm publish`
 Voir `package.json`, entrée `bin`
 
+## Debug
+Utiliser les configurations du debugger de VSCode
+
 ## Fonctionnement
 L'application créé un répertoire caché .unix_trail qui contient les fichiers suivants :
 - `cwd` : root directory

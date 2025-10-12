@@ -29,11 +29,10 @@ export async function checkWork() {
          return false
       }
    } catch(err) {
-      console.log('err', err)
       if (err.code === 'ECONNREFUSED') {
          console.log('*** connection to http server is impossible - have you started it?')
       } else {
-         console.log(err)
+         console.log('*** erreur inconnue lors de la requête au serveur http')
       }
       return false
    }
