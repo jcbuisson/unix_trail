@@ -1,9 +1,22 @@
 import { readFile, writeFile } from 'fs/promises'
-// import path from 'path'
+import { existsSync } from 'fs'
+import path from 'path';
 
 // `hash` is used to get deterministic random values
 
-export const getCwd = async () => await readFile('./.unix_trail/cwd', 'utf-8')
+// export const getCwd = async () => await readFile('./.unix_trail/cwd', 'utf-8')
+export function getCwd() {
+   let curr = process.cwd()
+   try {
+      while (curr !== '/') {
+         if (existsSync(`${curr}/.unix_trail`)) return curr
+         curr = path.dirname(dir); // get parent
+      }
+   } catch(err) {
+      console.log('*** you seem outside of the directory of your unix_trail session')
+   }
+}
+
 export const getCode = async () => await readFile('./.unix_trail/code', 'utf-8')
 export const getHash = async () => await readFile('./.unix_trail/hash', 'utf-8')
 
