@@ -41,7 +41,7 @@ export async function checkWork() {
          console.log('*** no process named myhttpserver is running - did you start it?')
          return false
       }
-      if (!isProcessDetached(pid)) {
+      if (!await isProcessDetached(pid)) {
          console.log('*** a process named myhttpserver is running, but it is not detached from the terminal')
          return false
       }
