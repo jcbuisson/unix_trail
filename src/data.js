@@ -10,18 +10,18 @@ export function getCwd() {
    try {
       while (curr !== '/') {
          if (existsSync(`${curr}/.unix_trail`)) return curr
-         curr = path.dirname(dir); // get parent
+         curr = path.dirname(curr); // get parent
       }
    } catch(err) {
       console.log('*** you seem outside of the directory of your unix_trail session')
    }
 }
 
-export const getCode = async () => await readFile('./.unix_trail/code', 'utf-8')
-export const getHash = async () => await readFile('./.unix_trail/hash', 'utf-8')
+export const getCode = async () => await readFile(path.join(getCwd(), '.unix_trail/code'), 'utf-8')
+export const getHash = async () => await readFile(path.join(getCwd(), '.unix_trail/hash'), 'utf-8')
 
-export const getCurrentStageIndex = async () => (await readFile('./.unix_trail/current', 'utf-8')).trim()
-export const setCurrentStageIndex = async (value) => await writeFile('./.unix_trail/current', value+'', 'utf-8')
+export const getCurrentStageIndex = async () => (await readFile(path.join(getCwd(), '.unix_trail/current'), 'utf-8')).trim()
+export const setCurrentStageIndex = async (value) => await writeFile(path.join(getCwd(), '.unix_trail/current'), value+'', 'utf-8')
 
 export const getBuildingCount = async () => {
    const hash = await getHash()

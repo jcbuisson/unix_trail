@@ -47,6 +47,17 @@
          "program": "${workspaceFolder}/src/index.js",
          "args": ["check"],
          "cwd": "/Users/chris"
+      },
+      {
+         "name": "status décalé",
+         "type": "node",
+         "request": "launch",
+         "skipFiles": [
+            "<node_internals>/**"
+         ],
+         "program": "${workspaceFolder}/src/index.js",
+         "args": ["status"],
+         "cwd": "/Users/chris/building1"
       }
    ]
 }
