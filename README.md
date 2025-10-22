@@ -39,7 +39,8 @@ stage: exécuter myhttpd en arrière plan
 stage : tuer le processus
 (check : vérifier que la requète http :8080/ ne renvoie pas 'Hello world')
 
-stage : download ciqual.csv avec wget
+
+stage : download ciqual.csv situé dans https://ftp.jcbuisson.dev/misc/ciqual2020_FR_2020_07_07.csv
 
 stage : extraire les colonnes 1 (nom) et X (nutriment variable selon code)
 

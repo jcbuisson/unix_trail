@@ -1,6 +1,7 @@
 import { existsSync } from 'fs'
+import path from 'path'
 
-import { getBuildingCount, getFloorCount, getRoomCount } from '#root/src/data.js'
+import { getBuildingCount, getFloorCount, getRoomCount, getCwd } from '#root/src/data.js'
 
 
 export async function setup() {
@@ -17,11 +18,12 @@ In each subdirectory, create ${roomCount} empty files named 'room1', ..., 'room$
 
 
 export async function checkWork() {
+   const cwd = await getCwd()
    const buildingCount = await getBuildingCount()
    const floorCount = await getFloorCount()
    const roomCount = await getRoomCount()
    for (let i = 1; i <= buildingCount; i++) {
-      const dirName = `building${i}`
+      const dirName = path.join(cwd, `building${i}`)
       if (!existsSync(dirName)) {
          console.log(`*** the directory '${dirName}' is missing`)
          return false
