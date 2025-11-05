@@ -10,7 +10,7 @@ export async function setup() {
 
 
 export async function displayInstructions() {
-   console.log(`Copy the gist 'https://gist.github.com/jcbuisson/f0cd0f29636618fa05d5faecdbd5a44c' in a file named 'httpserver.py' in the main directory`)
+   console.log(`Copy the gist 'https://gist.githubusercontent.com/jcbuisson/f0cd0f29636618fa05d5faecdbd5a44c/raw/839867053883c37756b0a6a1c0c9aca5646669ea/httpserver.py' in a file named 'httpserver.py' in the main directory`)
 }
 
 

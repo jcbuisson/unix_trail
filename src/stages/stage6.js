@@ -1,6 +1,7 @@
-import { readFile, writeFile } from 'fs/promises'
-import { existsSync } from 'fs'
-import axios from 'axios'
+import { readFile, stat } from 'fs/promises'
+import path from 'path'
+
+import { getCwd } from '#root/src/data.js'
 
 
 export async function setup() {
@@ -8,32 +9,25 @@ export async function setup() {
 
 
 export async function displayInstructions() {
-   console.log(`Create a symbolic link name 'myhttpserver' in /usr/local/bin to myhttpd.py`)
+   console.log(`Add to httpserver.py the python3 "shebang" and give it the execution permission for everyone`)
 }
 
 
 export async function checkWork() {
-   if (!existsSync('/usr/local/bin/myhttpserver')) {
-      console.log('*** cannot access /usr/local/bin/myhttpserver')
-      return false
-   }
-   const content = await readFile('/usr/local/bin/myhttpserver', 'utf-8')
+   const cwd = await getCwd()
+   const filePath = path.join(cwd, 'httpserver.py')
+   // check that it starts with '#!/usr/bin/env python3'
+   const content = await readFile(filePath, 'utf-8')
    if (!content.startsWith('#!/usr/bin/env python3')) {
-      console.log(`*** /usr/local/bin/myhttpserver does not point to the right file`)
+      console.log(`*** httpserver.py  does not start with the python3 shebang`)
       return false
    }
-   try {
-      const response = await axios.get('http://localhost:8000/')
-      if (response.status != 200 || response.data !== "Hello, world!") {
-         console.log('*** the http server returned an incorrect response')
-         return false
-      }
-   } catch(err) {
-      if (err.code === 'ECONNREFUSED') {
-         console.log('*** connection to http server is impossible - have you started it?')
-      } else {
-         console.log('*** erreur inconnue lors de la requête au serveur http')
-      }
+   // check that it has the execution permission for everyone
+   const stats = await stat(filePath)
+   const mode = stats.mode & 0o111 // Extract execution bits
+   const octalMode = mode.toString(8) // ex: "110"
+   if (octalMode !== '111') {
+      console.log(`*** httpserver.py does not have the execution permission for everyone`)
       return false
    }
    return true

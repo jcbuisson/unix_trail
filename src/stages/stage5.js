@@ -1,7 +1,4 @@
-import { readFile, stat } from 'fs/promises'
-import path from 'path'
-
-import { getCwd } from '#root/src/data.js'
+import axios from 'axios'
 
 
 export async function setup() {
@@ -9,25 +6,23 @@ export async function setup() {
 
 
 export async function displayInstructions() {
-   console.log(`Add to httpserver.py the python3 "shebang" and give it the execution permission for everyone`)
+   console.log(`Run httpserver.py`)
 }
 
 
 export async function checkWork() {
-   const cwd = await getCwd()
-   const filePath = path.join(cwd, 'httpserver.py')
-   // check that it starts with '#!/usr/bin/env python3'
-   const content = await readFile(filePath, 'utf-8')
-   if (!content.startsWith('#!/usr/bin/env python3')) {
-      console.log(`*** httpserver.py  does not start with the python3 shebang`)
-      return false
-   }
-   // check that it has the execution permission for everyone
-   const stats = await stat(filePath)
-   const mode = stats.mode & 0o111 // Extract execution bits
-   const octalMode = mode.toString(8) // ex: "110"
-   if (octalMode !== '111') {
-      console.log(`*** httpserver.py does not have the execution permission for everyone`)
+   try {
+      const response = await axios.get('http://localhost:8000/')
+      if (response.status != 200 || response.data !== "Hello, world!") {
+         console.log('*** the http server returned an incorrect response')
+         return false
+      }
+   } catch(err) {
+      if (err.code === 'ECONNREFUSED') {
+         console.log('*** connection to http server is impossible - have you started it?')
+      } else {
+         console.log('*** erreur inconnue lors de la requête au serveur http')
+      }
       return false
    }
    return true

@@ -1,11 +1,12 @@
-import { getCurrentStageIndex } from '#root/src/data.js'
+import { getCurrentStageIndex, getCode } from '#root/src/data.js'
 
 export async function status() {
    try {
       const current = await getCurrentStageIndex()
+      const code = await getCode()
       // check for the existence of a stage of `current` index
       await import(`./stages/stage${current}.js`)
-      console.log(`You are at stage ${current}`)
+      console.log(`You are at stage ${current} (code: ${code})`)
 
    } catch(err) {
       if (err.code === 'ERR_MODULE_NOT_FOUND') {
