@@ -8,7 +8,7 @@ export async function setup() {
 
 
 export async function displayInstructions() {
-   console.log(`Create a symbolic link name 'myhttpserver' in /usr/local/bin to myhttpd.py`)
+   console.log(`Create a symbolic link name 'myhttpserver' in /usr/local/bin to httpserver.py`)
 }
 
 
