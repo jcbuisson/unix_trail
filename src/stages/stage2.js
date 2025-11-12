@@ -16,7 +16,7 @@ export async function setup() {
 
 export async function displayInstructions() {
    console.log(`A hidden file (non-empty) has been placed inside one of the floor directories, among the room files.
-🔍 Your task: Find this hidden file and move it to the main directory, renaming it to 'secret.txt' in the process.`)
+🔍 Your task: Find this hidden file and move it to the trail directory, renaming it to 'secret.txt' in the process.`)
 }
 
 
@@ -25,13 +25,13 @@ export async function checkWork() {
    // check if the hidden file is still at its original place
    const secretFilePath = await getSecretFilePath()
    if (existsSync(secretFilePath)) {
-      console.log(`*** the hidden file is still at the same location - move it to the main directory`)
+      console.log(`*** the hidden file is still at the same location - move it to the trail directory`)
       return false
    }
    // check for a file named `secret.txt` at the root
    const secretTxtPath = path.join(cwd, 'secret.txt')
    if (!existsSync(secretTxtPath)) {
-      console.log(`*** the main directory does not contain a secret.txt file.`)
+      console.log(`*** the trail directory does not contain a secret.txt file.`)
       return false
    }
    // check that its content is `hash`

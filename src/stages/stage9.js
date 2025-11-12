@@ -10,7 +10,7 @@ export async function setup() {
 
 
 export async function displayInstructions() {
-   console.log('Download the file situated at https://ftp.jcbuisson.dev/misc/ciqual2020_FR_2020_07_07.csv in the main directory into a file named ciqual.csv')
+   console.log('Download the file situated at https://ftp.jcbuisson.dev/misc/ciqual2020_FR_2020_07_07.csv in the trail directory into a file named ciqual.csv')
 }
 
 
@@ -18,7 +18,7 @@ export async function checkWork() {
    const cwd = await getCwd()
    const ciqualPath = path.join(cwd, 'ciqual.csv')
    if (!existsSync(ciqualPath)) {
-      console.log("*** there is no file named ciqual.csv in the main directory")
+      console.log("*** there is no file named ciqual.csv in the trail directory")
       return false
    }
    const content = await readFile(ciqualPath, 'utf-8')

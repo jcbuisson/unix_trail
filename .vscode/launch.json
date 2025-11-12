@@ -13,7 +13,7 @@
          ],
          "program": "${workspaceFolder}/src/index.js",
          "args": ["initialize", "aaa"],
-         "cwd": "/Users/chris"
+         "cwd": "/Users/chris/workspaces/tests/trail"
       },
       {
          "name": "status",
@@ -24,7 +24,7 @@
          ],
          "program": "${workspaceFolder}/src/index.js",
          "args": ["status"],
-         "cwd": "/Users/chris"
+         "cwd": "/Users/chris/workspaces/tests/trail"
       },
       {
          "name": "instructions",
@@ -35,7 +35,7 @@
          ],
          "program": "${workspaceFolder}/src/index.js",
          "args": ["instructions"],
-         "cwd": "/Users/chris"
+         "cwd": "/Users/chris/workspaces/tests/trail"
       },
       {
          "name": "check",
@@ -46,18 +46,7 @@
          ],
          "program": "${workspaceFolder}/src/index.js",
          "args": ["check"],
-         "cwd": "/Users/chris"
-      },
-      {
-         "name": "status décalé",
-         "type": "node",
-         "request": "launch",
-         "skipFiles": [
-            "<node_internals>/**"
-         ],
-         "program": "${workspaceFolder}/src/index.js",
-         "args": ["status"],
-         "cwd": "/Users/chris/building1"
+         "cwd": "/Users/chris/workspaces/tests/trail"
       }
    ]
 }

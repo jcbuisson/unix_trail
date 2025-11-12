@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getCode } from '#root/src/data.js'
 
 
 export async function setup() {
@@ -6,7 +7,8 @@ export async function setup() {
 
 
 export async function displayInstructions() {
-   console.log(`Run httpserver.py`)
+   const code = await getCode()
+   console.log(`Run httpserver${code}.py`)
 }
 
 
